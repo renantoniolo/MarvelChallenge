@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MarvelStorage" representedClassName="MarvelStorage" syncable="YES" codeGenerationType="class">
+        <attribute name="descriptonCharacter" optional="YES" attributeType="String"/>
+        <attribute name="idCharacter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="imageCharacter" optional="YES" attributeType="String"/>
+        <attribute name="nameCharacter" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="MarvelStorage" positionX="-127.286865234375" positionY="175.9800415039062" width="128" height="89"/>
+    </elements>
+</model>
