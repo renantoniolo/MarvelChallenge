@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 
+@available(iOS 13.0, *)
 class CharacterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imgCharacter: UIImageView!

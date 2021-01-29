@@ -9,6 +9,11 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
 class FavoritesCollectionViewController: UICollectionViewController {
     
     lazy var label: UILabel = {

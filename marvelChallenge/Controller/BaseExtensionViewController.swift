@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+@available(iOS 13.0, *)
 extension UIViewController{
     
     var context: NSManagedObjectContext{
@@ -24,6 +25,7 @@ extension UIViewController{
     }
 }
 
+@available(iOS 13.0, *)
 extension UICollectionViewCell{
     
     var context: NSManagedObjectContext{

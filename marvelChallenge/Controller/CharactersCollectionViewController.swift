@@ -9,6 +9,17 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
 class CharactersCollectionViewController: UICollectionViewController {
     
     // label status/erro
