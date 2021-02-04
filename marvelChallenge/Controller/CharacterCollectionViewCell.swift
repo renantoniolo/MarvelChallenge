@@ -17,18 +17,17 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var btnAddFavorite: UIButton!
     var hero: Hero!
     var marvelManagerStored = MarvelManagerStored.shared
+    var heros: [MarvelStorage]!
     
     func prepareCell(character: Hero, characters: [MarvelStorage] ){
         
         hero = character
+        heros = characters
         
-        for fav in characters{
-            if hero.id == fav.idCharacter{
-                btnAddFavorite.setImage(UIImage(named: "starHero"), for: .normal)
-                break
-            }
+        if checkHero(id: hero.id) {
+            btnAddFavorite.setImage(UIImage(named: "starHero"), for: .normal)
         }
-        
+
         viewBack.layer.cornerRadius = 5
         lbCharacter.text = character.name
         
@@ -40,12 +39,26 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         
     }
     
+    func checkHero(id: Int) -> Bool {
+        
+        for fav in heros{
+            if hero.id == fav.idCharacter{
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     @IBAction func addFavorite(_ sender: UIButton) {
         
-        let ret = marvelManagerStored.insertCharacter(hero: hero, context: context)
+        if !checkHero(id: hero.id) {
         
-        if !ret {
-            print("erro ao gravar")
+            let ret = marvelManagerStored.insertCharacter(hero: hero, context: context)
+            
+            if !ret {
+                print("erro ao gravar")
+            }
         }
         
     }
