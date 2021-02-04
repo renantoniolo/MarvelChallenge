@@ -7,10 +7,11 @@
 
 import Foundation
 import SwiftHash
+import CoreData
 
 class MarvelRest {
     
-    static private let basePath = "https://gateway.marvel.com/v1/public/characters?" //"http://gateway.marvel.com/v1/public/characters?"
+    static private let basePath = "https://gateway.marvel.com/v1/public/characters?"
     static private let privateKey = "641e6d301a882637358569ac26a83927b7695147"
     static private let publicKey = "708af22fc92ea375d92b2b4af71da46a"
     static private let limit = 20
@@ -49,7 +50,9 @@ class MarvelRest {
 
                 guard let response = response as? HTTPURLResponse else {return}
                 if(response.statusCode == 200){
-                    print("Recebemos da api")
+                    
+                    
+                    // Recebemos da api
                     guard let data = data else {return}
                     
                     do{
@@ -65,7 +68,7 @@ class MarvelRest {
                     }
                 }
             }
-            else{
+            else{ // error
                 print(error!)
                 onComplete(nil)
             }

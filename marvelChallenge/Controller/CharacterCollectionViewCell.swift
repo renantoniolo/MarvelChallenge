@@ -14,13 +14,20 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imgCharacter: UIImageView!
     @IBOutlet weak var lbCharacter: UILabel!
     @IBOutlet weak var viewBack: UIView!
-    
+    @IBOutlet weak var btnAddFavorite: UIButton!
     var hero: Hero!
     var marvelManagerStored = MarvelManagerStored.shared
     
-    func prepareCell(character: Hero){
+    func prepareCell(character: Hero, characters: [MarvelStorage] ){
         
         hero = character
+        
+        for fav in characters{
+            if hero.id == fav.idCharacter{
+                btnAddFavorite.setImage(UIImage(named: "starHero"), for: .normal)
+                break
+            }
+        }
         
         viewBack.layer.cornerRadius = 5
         lbCharacter.text = character.name

@@ -7,8 +7,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 @available(iOS 13.0, *)
 @available(iOS 13.0, *)
 @available(iOS 13.0, *)
@@ -23,7 +21,7 @@ private let reuseIdentifier = "Cell"
 class CharactersCollectionViewController: UICollectionViewController {
     
     // label status/erro
-    lazy var label: UILabel = {
+    var label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .white
@@ -33,6 +31,7 @@ class CharactersCollectionViewController: UICollectionViewController {
     // Variaveis Globais
     var characters: [Hero] = []
     var checkConnection = NetworkConnection.shared
+    var marvelManagerStored = MarvelManagerStored.shared
     var page: Int = 0
     var total: Int = 0
     
@@ -42,13 +41,14 @@ class CharactersCollectionViewController: UICollectionViewController {
         loadCharacters()
         
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
 
     }
     
-    func loadCharacters(){
+    @IBAction func loadCharacters(){
         
         if(checkConnection.checkConnection()){
+            marvelManagerStored.loadCharacters(context: context)
             label.text = "searching characters..."
             MarvelRest.loadMarvelAPI(name: "", page: page) { (marvel) in
                 
@@ -67,7 +67,9 @@ class CharactersCollectionViewController: UICollectionViewController {
             }
         }
         else{
+    
             self.label.text = "not connection internet!"
+            collectionView.backgroundView = label
         }
     }
     
@@ -82,7 +84,9 @@ class CharactersCollectionViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        
+        if(!checkConnection.checkConnection()){
+            self.label.text = "not connection internet!"
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -99,7 +103,7 @@ class CharactersCollectionViewController: UICollectionViewController {
     
         // Configure the cell
         let hero = characters[indexPath.row]
-        cell.prepareCell(character: hero)
+        cell.prepareCell(character: hero, characters: marvelManagerStored.characters)
     
         return cell
     }

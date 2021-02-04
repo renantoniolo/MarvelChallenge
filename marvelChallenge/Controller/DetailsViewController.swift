@@ -96,6 +96,7 @@ class DetailsViewController: UIViewController {
         let ret = marvelManagerStored.insertCharacter(hero: character, context: context)
         
         if ret {
+            
             showAlertView(title: "Sucess", textMessage: "\(character.name) add in favorite.", titleButton: "Ok", style: .default)
         }
         else{

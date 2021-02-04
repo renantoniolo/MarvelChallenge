@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bcl-9Q-Gud">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -97,6 +98,7 @@
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="185" height="240"/>
                                 <connections>
+                                    <outlet property="btnAddFavorite" destination="nPl-zb-0lc" id="7WB-ob-UYu"/>
                                     <outlet property="imgCharacter" destination="qfD-mN-GME" id="4fL-TV-iv0"/>
                                     <outlet property="lbCharacter" destination="1De-5k-GEi" id="uVN-2U-N0u"/>
                                     <outlet property="viewBack" destination="C3J-16-7Kg" id="T6A-WD-bcA"/>
@@ -109,7 +111,14 @@
                             <outlet property="delegate" destination="8AT-vy-VbP" id="aJw-nK-1h0"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Characters" id="jMj-qU-O5Z"/>
+                    <navigationItem key="navigationItem" title="Characters" id="jMj-qU-O5Z">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="1uI-d3-GJq">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="loadCharacters" destination="8AT-vy-VbP" id="X2l-KT-VzW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hEb-zS-mgi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -383,7 +392,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dIl-EE-xrw"/>
+        <segue reference="ASv-6i-tnW"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="character_icon" width="24" height="24"/>

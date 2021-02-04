@@ -18,13 +18,13 @@ class NetworkConnection{
 
         switch status {
         case .unknown, .offline:
-            print("Not connected")
+            // Not connected
             return false
         case .online(.wwan):
-            print("Connected via WWAN")
+            // Connected via WWAN
             return true
         case .online(.wiFi):
-            print("Connected via WiFi")
+            // Connected via WiFi
             return true
         }
         
