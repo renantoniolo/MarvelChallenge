@@ -103,7 +103,7 @@ class CharactersCollectionViewController: UICollectionViewController {
     
         // Configure the cell
         let hero = characters[indexPath.row]
-        cell.prepareCell(character: hero, characters: marvelManagerStored.characters)
+        cell.prepareCell(character: hero, characters: marvelManagerStored.characters, controller: self)
     
         return cell
     }

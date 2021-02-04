@@ -212,12 +212,10 @@
 		510CCB1D25C1FB5A00FEEB29 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				510CCB3525C2080B00FEEB29 /* CharactersCollectionViewController.swift */,
-				510CCB3A25C2081B00FEEB29 /* FavoritesCollectionViewController.swift */,
-				510CCB3F25C2298C00FEEB29 /* CharacterCollectionViewCell.swift */,
+				EFA8FB7B25CC310A0044E04F /* Favorites */,
+				EFA8FB7A25CC30D40044E04F /* Characters */,
 				5121EA1425C24538007A02AC /* DetailsViewController.swift */,
 				5116EEC825C31E9F009B97BF /* BaseExtensionViewController.swift */,
-				51BC5FB125C3258E00F0C4CD /* FavoriteCollectionViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -240,6 +238,24 @@
 				51BC5FBB25C354E600F0C4CD /* Reachability.swift */,
 			);
 			path = Commun;
+			sourceTree = "<group>";
+		};
+		EFA8FB7A25CC30D40044E04F /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				510CCB3F25C2298C00FEEB29 /* CharacterCollectionViewCell.swift */,
+				510CCB3525C2080B00FEEB29 /* CharactersCollectionViewController.swift */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		EFA8FB7B25CC310A0044E04F /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				510CCB3A25C2081B00FEEB29 /* FavoritesCollectionViewController.swift */,
+				51BC5FB125C3258E00F0C4CD /* FavoriteCollectionViewCell.swift */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

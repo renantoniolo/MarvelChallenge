@@ -50,18 +50,12 @@ class MarvelRest {
 
                 guard let response = response as? HTTPURLResponse else {return}
                 if(response.statusCode == 200){
-                    
-                    
                     // Recebemos da api
                     guard let data = data else {return}
                     
                     do{
                         let heros =  try JSONDecoder().decode(MarvelInfo.self, from: data)
-                        for hero in heros.data.results{
-                            print(hero.name)
-                        }
                         onComplete(heros)
-                        
                     }catch{
                         print("Erro a receber: \(error.localizedDescription)")
                         onComplete(nil)

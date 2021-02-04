@@ -18,18 +18,23 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     var hero: Hero!
     var marvelManagerStored = MarvelManagerStored.shared
     var heros: [MarvelStorage]!
+    var controllerCharacter: CharactersCollectionViewController!
     
-    func prepareCell(character: Hero, characters: [MarvelStorage] ){
+    func prepareCell(character: Hero, characters: [MarvelStorage], controller: CharactersCollectionViewController){
         
         hero = character
         heros = characters
+        controllerCharacter = controller
         
         if checkHero(id: hero.id) {
             btnAddFavorite.setImage(UIImage(named: "starHero"), for: .normal)
         }
+        else{
+            btnAddFavorite.setImage(UIImage(named: "starGray"), for: .normal)
+        }
 
         viewBack.layer.cornerRadius = 5
-        lbCharacter.text = character.name
+        lbCharacter.text = String(character.name)
         
         if let url = URL(string: hero.thumbnail.url){
             imgCharacter.kf.indicatorType = .activity
@@ -58,6 +63,9 @@ class CharacterCollectionViewCell: UICollectionViewCell {
             
             if !ret {
                 print("erro ao gravar")
+            }
+            else{
+                controllerCharacter.loadCharacters()
             }
         }
         
