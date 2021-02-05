@@ -53,6 +53,7 @@ class DetailsViewController: UIViewController {
         if characterCore == nil {
             
             //valores
+            title = character?.name
             lbNameCharacter.text = character?.name
             lbDescription.text = character?.verifiedDescription
             
@@ -66,6 +67,7 @@ class DetailsViewController: UIViewController {
         else{
             
             //valores
+            title = characterCore?.nameCharacter
             lbNameCharacter.text = characterCore?.nameCharacter
             lbDescription.text = characterCore?.descriptonCharacter
             btnAddFavorite.isHidden = true
