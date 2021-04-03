@@ -14,7 +14,7 @@
         <!--Characters-->
         <scene sceneID="spS-Jr-33b">
             <objects>
-                <collectionViewController id="8AT-vy-VbP" customClass="CharactersCollectionViewController" customModule="marvelChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="TabPage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8AT-vy-VbP" customClass="CharactersCollectionViewController" customModule="marvelChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Tad-PD-WrS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,7 +128,7 @@
         <!--Details View Controller-->
         <scene sceneID="6sb-TW-c5R">
             <objects>
-                <viewController id="Ibf-Xd-IVH" customClass="DetailsViewController" customModule="marvelChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ibf-Xd-IVH" customClass="DetailsViewController" customModule="marvelChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gwv-5P-T0i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -237,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKc-jO-Mwf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3082.608695652174" y="117.85714285714285"/>
+            <point key="canvasLocation" x="3478" y="126"/>
         </scene>
         <!--Characters-->
         <scene sceneID="YeC-CN-pLo">
@@ -395,7 +395,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dIl-EE-xrw"/>
+        <segue reference="ASv-6i-tnW"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="character_icon" width="24" height="24"/>

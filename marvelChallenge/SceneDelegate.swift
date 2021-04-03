@@ -18,17 +18,67 @@ import UIKit
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
-    var window: UIWindow?
-
-
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    
+    // List of known shortcut actions.
+    enum ActionType: String {
+        case favoriteAction = "FavoriteAction"
         
-        window?.tintColor = .black
-        guard let _ = (scene as? UIWindowScene) else { return }
     }
+    
+    var window: UIWindow?
+    var savedShortCutItem: UIApplicationShortcutItem!
+
+    /// - Tag: willConnectTo
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+
+        window?.tintColor = .black
+        
+        if let shortcutItem = connectionOptions.shortcutItem {
+            // Save it off for later when we become active.
+            savedShortCutItem = shortcutItem
+        }
+    }
+    
+    func showAlert(message: String) {
+        let alertController = UIAlertController(title: "Quick Action", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+        window?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    func openView() {
+        
+        if let navController = window?.rootViewController as? UINavigationController {
+               let storyboard = UIStoryboard(name: "Main", bundle: nil)
+               if let favoritesCollectionViewController =
+                   storyboard.instantiateViewController(identifier: "TabBar") as? FavoritesCollectionViewController {
+                   // Pass the contact to the detail view controller and push it.
+                favoritesCollectionViewController.
+                   //navController.pushViewController(detailsViewController, animated: false)
+               }
+        }
+
+         
+    }
+    
+    func handleShortCutItem(shortcutItem: UIApplicationShortcutItem) -> Bool {
+        
+        if let actionTypeValue = ActionType(rawValue: shortcutItem.type) {
+            switch actionTypeValue {
+               case .favoriteAction:
+                openView()//showAlert(message: "Favoritos")
+            }
+        }
+        return true
+    }
+    
+    func windowScene(_ windowScene: UIWindowScene,
+                     performActionFor shortcutItem: UIApplicationShortcutItem,
+                     completionHandler: @escaping (Bool) -> Void) {
+        
+        let handled = handleShortCutItem(shortcutItem: shortcutItem)
+        completionHandler(handled)
+    }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
@@ -40,11 +90,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        if savedShortCutItem != nil {
+            _ = handleShortCutItem(shortcutItem: savedShortCutItem)
+        }
     }
-
+    
+    // Busca na base de dados os herois cadastrados
     func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
+
+        let application = UIApplication.shared
+        application.shortcutItems = MarvelManagerStored.shared.characters.map { contact -> UIApplicationShortcutItem in
+            return UIApplicationShortcutItem(type: ActionType.favoriteAction.rawValue,
+                                             localizedTitle: contact.nameCharacter! as String,
+                                             localizedSubtitle: contact.nameCharacter! as String,
+                                             icon: UIApplicationShortcutIcon(systemImageName: "star.fill")
+                                             )
+        }
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
