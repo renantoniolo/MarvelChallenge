@@ -24,6 +24,3 @@
 | ![marvel](printscreen/marvelapp.gif) |
 |:---:|
 | App Marvel Challenge | 
-
-
-
